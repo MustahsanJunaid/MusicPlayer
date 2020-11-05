@@ -1,6 +1,15 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="dialog_radius">8dp</dimen>
-    <dimen name="dialog_margin">26dp</dimen>
     <dimen name="dialog_width">280dp</dimen>
+
+    <dimen name="margin_dialog">26dp</dimen>
+    <dimen name="margin_medium">8dp</dimen>
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="margin_normal">16dp</dimen>
+    <dimen name="thumb_playlist">70dp</dimen>
+    <dimen name="thumb_width">140dp</dimen>
+    <dimen name="thumb_height">90dp</dimen>
+    <dimen name="item_spacing">5dp</dimen>
+    <dimen name="thumb_big">140dp</dimen>
 </resources>

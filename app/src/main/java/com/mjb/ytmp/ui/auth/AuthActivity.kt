@@ -1,5 +1,7 @@
 package com.mjb.ytmp.ui.auth
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.ViewModel
@@ -10,18 +12,16 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.Scope
 import com.google.android.gms.tasks.Task
+import com.mjb.ytmp.app.AppViewModel
 import com.mjb.ytmp.app.CompactActivity
 import com.mjb.ytmp.databinding.ActivityMainBinding
-import com.mjb.ytmp.ui.home.HomeActivity
+import com.mjb.ytmp.ui.playlist.PlayListActivity
 import com.mjb.ytmp.util.YoutubeHelper
 import com.mustahsan.androidkit.alert.snackBarShort
 import com.mustahsan.androidkit.log.logW
 
-class AuthActivity : CompactActivity<ViewModel>() {
+class AuthActivity : CompactActivity<AppViewModel<*>>() {
     lateinit var binding: ActivityMainBinding
-
-    var googleSignInAccount: GoogleSignInAccount? = null
-    lateinit var googleSignInClient: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,9 +33,8 @@ class AuthActivity : CompactActivity<ViewModel>() {
     }
 
     private fun checkAlreadyLogin(): Boolean {
-        val account = GoogleSignIn.getLastSignedInAccount(this)
-        return if (account != null && !account.isExpired) {
-            HomeActivity.start(this)
+        return if (googleSignInAccount != null && googleSignInAccount?.isExpired == false) {
+            PlayListActivity.start(this)
             finish()
             true
         } else {
@@ -44,11 +43,7 @@ class AuthActivity : CompactActivity<ViewModel>() {
     }
 
     private fun initAuth() {
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestScopes(Scope(YoutubeHelper.SCOPE))
-            .requestEmail()
-            .build()
-        googleSignInClient = GoogleSignIn.getClient(this, gso)
+
         binding.authButton.setOnClickListener {
             val signInIntent: Intent = googleSignInClient.signInIntent
             startActivityForResult(signInIntent, RC_AUTH)
@@ -68,7 +63,7 @@ class AuthActivity : CompactActivity<ViewModel>() {
         try {
             googleSignInAccount = completedTask.getResult(ApiException::class.java)
             googleSignInAccount?.let {
-                HomeActivity.start(this)
+                PlayListActivity.start(this)
                 finish()
             }
         } catch (e: ApiException) {
@@ -81,6 +76,11 @@ class AuthActivity : CompactActivity<ViewModel>() {
 
 
     companion object {
+        fun start(activity: Activity) {
+            activity.startActivity(Intent(activity, AuthActivity::class.java))
+            activity.finish()
+        }
+
         const val RC_AUTH = 1234
     }
 }

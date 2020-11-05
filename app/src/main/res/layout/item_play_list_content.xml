@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="playlist"
+            type="com.mjb.ytmp.model.PlayListItemX" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="?attr/selectableItemBackground">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/thumbnailView"
+                thumbnail="@{playlist.item.snippet.thumbnails}"
+                android:layout_width="@dimen/thumb_width"
+                android:layout_height="@dimen/thumb_height"
+                android:layout_margin="@dimen/margin_medium"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bottom_gradient"
+                app:layout_constraintBottom_toBottomOf="@id/thumbnailView"
+                app:layout_constraintEnd_toEndOf="@id/thumbnailView"
+                app:layout_constraintStart_toStartOf="@id/thumbnailView" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/durationTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:layout_toEndOf="@+id/thumbnailView"
+                android:shadowColor="@color/black"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@{playlist.durationFormatted}"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/thumbnailView"
+                app:layout_constraintEnd_toEndOf="@id/thumbnailView" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/titleTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:text="@{playlist.item.snippet.title}"
+                android:textColor="@color/textNormal"
+                app:layout_constraintBottom_toTopOf="@id/descriptionTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/thumbnailView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/descriptionTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/thumbnailView"
+                android:maxLines="2"
+                android:text="@{playlist.author}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/titleTextView"
+                app:layout_constraintStart_toStartOf="@id/titleTextView"
+                app:layout_constraintTop_toBottomOf="@id/titleTextView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

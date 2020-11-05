@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Music Player</string>
+    <string name="app_name">Youtube Playlist</string>
     <string name="title_activity_splash">SplashActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -13,5 +13,11 @@
     <string name="action_okay">Okay</string>
     <string name="action_cancel">Cancel</string>
     <string name="title_error">Error</string>
-    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_home">@string/app_name</string>
+    <string name="title_activity_detail">Play list</string>
+
+
+    <string name="count_videos" formatted="false">%d Videos</string>
+    <string name="count_video" formatted="false">%d Video</string>
+    <string name="loading_data">Loading data, please wait...</string>
 </resources>

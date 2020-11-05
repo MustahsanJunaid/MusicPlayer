@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mjb.ytmp">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".app.MusicPlayerApp"
         android:allowBackup="true"
@@ -11,9 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MusicPlayer">
         <activity
-            android:name=".ui.home.HomeActivity"
+            android:name=".ui.playlist.PlayListActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/Theme.MusicPlayer.NoActionBar"></activity>
+            android:theme="@style/Theme.MusicPlayer.NoActionBar"/>
+        <activity
+            android:name=".ui.content.ContentDetailsActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/Theme.MusicPlayer.NoActionBar"/>
         <activity
             android:name=".ui.auth.AuthActivity"
             android:theme="@style/Theme.MusicPlayer.NoActionBar">

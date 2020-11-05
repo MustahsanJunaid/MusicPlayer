@@ -4,11 +4,12 @@
     <color name="colorYoutubeDark">#EC071A</color>
 
     <color name="colorBackground">#FCFCFC</color>
-    <color name="colorBackgroundDark">#FAFAFA</color>
+    <color name="colorBackgroundDark">#f6f6f6</color>
     <color name="colorBackgroundNight">#232323</color>
     <color name="textNormal">#222222</color>
     <color name="transparent">#00000000</color>
 
+    <color name="grey">#AAAAAA</color>
 
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>

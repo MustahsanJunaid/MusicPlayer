@@ -32,7 +32,7 @@
     </style>
 
     <style name="Text.Title">
-        <item name="android:textColor">?android:colorPrimary</item>
+        <item name="android:textColor">@color/black</item>
         <item name="android:textSize">18sp</item>
     </style>
 
